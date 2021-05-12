@@ -144,11 +144,11 @@ open class LBXScanViewController: UIViewController {
         }
     }
     
-    open override func viewWillDisappear(_ animated: Bool) {
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-        qRScanView?.stopScanAnimation()
-        scanObj?.stop()
-    }
+//    open override func viewWillDisappear(_ animated: Bool) {
+//        NSObject.cancelPreviousPerformRequests(withTarget: self)
+//        qRScanView?.stopScanAnimation()
+//        scanObj?.stop()
+//    }
     
     @objc open func openPhotoAlbum() {
         LBXPermissions.authorizePhotoWith { [weak self] _ in
@@ -158,6 +158,10 @@ open class LBXScanViewController: UIViewController {
             picker.allowsEditing = true
             self?.present(picker, animated: true, completion: nil)
         }
+    }
+    
+    deinit {
+        print(" ---- release --- LBXScanViewController ")
     }
 }
 
